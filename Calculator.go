@@ -5,25 +5,13 @@ import (
 )
 
 func info1() {
-	fmt.Println("Калькулятор с арабскими и римскими числами.")
-	fmt.Println("Выбирете с какими числами вы хотите взаимодействовать.")
-	fmt.Println("\nДля выбора введите 1 если хотите работать с арабскими и 2 если хотите работать с римскими числами.")
-	fmt.Println("\nЕсть вариант ввода словами, например: 'арабские', 'Арабские', 'арабские числа','Арабские числа',")
-	fmt.Println("'римские', 'Римские', 'римские числа', 'Римские числа'.\n ")
+	fmt.Println("Калькулятор с арабскими и римскими числами.\n ")
 }
 
 func info2() {
-	fmt.Println("Введите два любых числа от 1 до 10 и символ вычисления которое вы хотите сделать.")
-	fmt.Println("Поддерживаются только вычисления сложения(+), вычитания(-), умножения(*) и деления(/).")
-	fmt.Println("Вводить нужно в определённой последовательности. Пример: '1 + 1' или \n'1\n +\n 1'")
-	fmt.Println("И не вводите всё слитно иначе ничего не получится. Вы можете вводить данные соблюдая отступ или перенося данные на новую строку.")
-}
-
-func info3() {
-	fmt.Println("")
-	fmt.Println("Для ввода доступны римские числа 'I, II, III, IV, V, VI, VII, VIII, VIX и X' и символ вычисления которое вы хотите сделать.")
-	fmt.Println("Поддерживаются только вычисления сложения(+), вычитания(-), умножения(*) и деления(/).")
-	fmt.Println("Вводить нужно в определённой последовательности. Пример: 'I + I' или \n'I\n +\n I'")
+	fmt.Println("Вы можете вводить числа (армабские 1, 2, 3, 4, 5, 6, 7, 8, 9 10), (римские 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X')")
+	fmt.Println("и символ вычисления которое вы хотите сделать. Поддерживаются только вычисления сложения(+), вычитания(-), умножения(*) и деления(/).")
+	fmt.Println("Вводить нужно в определённой последовательности. Пример: '1 + 1' или \n'1\n +\n 1',\n 'I + I' или \n'I\n +\n I'")
 	fmt.Println("И не вводите всё слитно иначе ничего не получится. Вы можете вводить данные соблюдая отступ или перенося данные на новую строку.")
 }
 
@@ -44,30 +32,7 @@ func checkOp(op string) string {
 	return op
 }
 
-func checkNum1(num int) int {
-	switch num {
-	case 1:
-	case 2:
-	case 3:
-	case 4:
-	case 5:
-	case 6:
-	case 7:
-	case 8:
-	case 9:
-	case 10:
-	default:
-		if num != ' ' {
-			panic("Ошибка была введена строка без необходимых данных и это не является математической операцией")
-		} else {
-			panic("Ошибка было введенно некорректное число")
-		}
-
-	}
-	return num
-}
-
-func checkNum2(num string) int {
+func checkNum(num string) int {
 	var num2 int
 	switch num {
 	case "I":
@@ -90,6 +55,26 @@ func checkNum2(num string) int {
 		num2 = 9
 	case "X":
 		num2 = 10
+	case "1":
+		num2 = 11
+	case "2":
+		num2 = 12
+	case "3":
+		num2 = 13
+	case "4":
+		num2 = 14
+	case "5":
+		num2 = 15
+	case "6":
+		num2 = 16
+	case "7":
+		num2 = 17
+	case "8":
+		num2 = 18
+	case "9":
+		num2 = 19
+	case "10":
+		num2 = 20
 	default:
 		if num != " " {
 			panic("Ошибка была введена строка без необходимых данных и это не является математической операцией")
@@ -101,22 +86,7 @@ func checkNum2(num string) int {
 	return num2
 }
 
-func calculation1(num1 int, op string, num2 int) int {
-	var result int
-	switch op {
-	case "+":
-		result = num1 + num2
-	case "-":
-		result = num1 - num2
-	case "*":
-		result = num1 * num2
-	case "/":
-		result = num1 / num2
-	}
-	return result
-}
-
-func calculation2(num1 int, op string, num2 int) {
+func calculation1(num1 int, op string, num2 int) {
 	romanNum := [...]string{"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X",
 		"XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX",
 		"XXI", "XXII", "XXIII", "XXIV", "XXV", "XXVI", "XXVII", "XXVIII", "XXIX", "XXX",
@@ -128,25 +98,43 @@ func calculation2(num1 int, op string, num2 int) {
 		"LXXXI", "LXXXII", "LXXXIII", "LXXXIV", "LXXXV", "LXXXVI", "LXXXVII", "LXXXVIII", "LXXXIX", "XC",
 		"XCI", "XCII", "XCIII", "XCIV", "XCV", "XCVI", "XCVII", "XCVIII", "XCIX", "C"}
 	var result int
-	switch op {
-	case "+":
-		result = num1 + num2
+	if num1 >= 11 && num2 >= 11 && num1 <= 20 && num2 <= 20 {
+		switch op {
+		case "+":
+			result = (num1 - 10) + (num2 - 10)
+			fmt.Println("Результат сложения: ", result)
+		case "-":
+			result = (num1 - 10) - (num2 - 10)
+			fmt.Println("Результат сложения: ", result)
+		case "*":
+			result = (num1 - 10) * (num2 - 10)
+			fmt.Println("Результат сложения: ", result)
+		case "/":
+			result = (num1 - 10) / (num2 - 10)
+			fmt.Println("Результат сложения: ", result)
+		}
+	} else if num1 >= 1 && num2 >= 1 && num1 <= 10 && num2 <= 10 {
+		switch op {
+		case "+":
+			result = num1 + num2
 
-		fmt.Println("Результат сложения: ", romanNum[result-1])
-	case "-":
-		result = num1 - num2
-		checkCalculat(result)
-		fmt.Println("Результат сложения: ", romanNum[result-1])
-	case "*":
-		result = num1 * num2
+			fmt.Println("Результат сложения: ", romanNum[result-1])
+		case "-":
+			result = num1 - num2
+			checkCalculat(result)
+			fmt.Println("Результат сложения: ", romanNum[result-1])
+		case "*":
+			result = num1 * num2
 
-		fmt.Println("Результат сложения: ", romanNum[result-1])
-	case "/":
-		result = num1 / num2
-		checkCalculat(result)
-		fmt.Println("Результат сложения: ", romanNum[result-1])
+			fmt.Println("Результат сложения: ", romanNum[result-1])
+		case "/":
+			result = num1 / num2
+			checkCalculat(result)
+			fmt.Println("Результат сложения: ", romanNum[result-1])
+		}
+	} else {
+		panic("Ошибка некорректны ввод данных")
 	}
-
 }
 
 func checkCalculat(result int) int {
@@ -158,30 +146,12 @@ func checkCalculat(result int) int {
 }
 
 func main() {
-	var choice string
+	var num1, op, num2 string
+
 	info1()
+	info2()
 
-	fmt.Scanln(&choice)
+	fmt.Scanln(&num1, &op, &num2)
 
-	if choice == "1" || choice == "арабские" || choice == "Арабские" || choice == "арабские числа" || choice == "Арабские числа" {
-		fmt.Println("Вы выбрали арабские.\n ")
-		info2()
-		var op string
-		var num1, num2 int
-		fmt.Scanln(&num1, &op, &num2)
-		fmt.Println("Результат: ", calculation1(checkNum1(num1), checkOp(op), checkNum1(num2)))
-
-	} else if choice == "2" || choice == "римские" || choice == "Римские" || choice == "римские числа" || choice == "Римские числа" {
-		fmt.Println("Вы выбрали римские.\n ")
-		var num1, op, num2 string
-		info3()
-		fmt.Scanln(&num1, &op, &num2)
-		calculation2(checkNum2(num1), checkOp(op), checkNum2(num2))
-
-	} else if choice != " " {
-		panic("Ошибка была введёна строка без необходимых данных")
-
-	} else {
-		panic("Ошибка было введено неверное значение")
-	}
+	calculation1(checkNum(num1), checkOp(op), checkNum(num2))
 }

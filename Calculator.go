@@ -137,7 +137,6 @@ func splitRomStr(data string) {
 				panic("Exceeding permissible actions.")
 			}
 			i++
-			fmt.Println(a)
 		} else {
 			i++
 		}
@@ -176,9 +175,6 @@ func splitRomStr(data string) {
 	} else {
 		panic("Exceeding the amount of data received.")
 	}
-	fmt.Println(dataNum1)
-	fmt.Println(dataOp)
-	fmt.Println(dataNum2)
 	checkThreeData(dataNum1, dataOp, dataNum2)
 }
 

@@ -88,6 +88,7 @@ func checkThreeData(num1, op, num2 string) {
 			} else {
 				panic("Unavailable actions.")
 			}
+
 			calculatorRom(dataNum1, dataOp, dataNum2)
 		} else {
 			panic("A number greater than 10 was received.")
@@ -126,7 +127,21 @@ func checkThreeData(num1, op, num2 string) {
 
 func splitRomStr(data string) {
 	var dataNum1, dataNum2, dataOp string
+	var a int
 	length := len(data)
+	a = 0
+	for i := 0; i < length; {
+		if data[i] == 42 || data[i] == 43 || data[i] == 45 || data[i] == 47 {
+			a++
+			if a > 1 {
+				panic("Exceeding permissible actions.")
+			}
+			i++
+			fmt.Println(a)
+		} else {
+			i++
+		}
+	}
 
 	if length <= 9 {
 
@@ -134,8 +149,10 @@ func splitRomStr(data string) {
 			if data[i] >= 65 && data[i] <= 90 {
 				if dataOp != "" {
 					dataNum2 += string(data[i])
+
 				} else {
 					dataNum1 += string(data[i])
+
 				}
 
 			} else if data[i] == 42 || data[i] == 43 || data[i] == 45 || data[i] == 47 {
@@ -159,6 +176,9 @@ func splitRomStr(data string) {
 	} else {
 		panic("Exceeding the amount of data received.")
 	}
+	fmt.Println(dataNum1)
+	fmt.Println(dataOp)
+	fmt.Println(dataNum2)
 	checkThreeData(dataNum1, dataOp, dataNum2)
 }
 
